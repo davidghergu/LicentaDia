@@ -2,8 +2,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
-// const BundelAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-// "analyze": "webpack --profile --json > stats.json"
+
 const TerserPlugin = require("terser-webpack-plugin");
 const path = require('path');
 
@@ -81,14 +80,3 @@ module.exports = {
     clean: true,
   },
 };
-// babel
-// {
-//   test: /\.js$/,
-//   exclude: /node_modules/,
-//   use: {
-//     loader: "babel-loader",
-//     options: {
-//       presets: ["@babel/preset-env"],
-//     },
-//   },
-// },

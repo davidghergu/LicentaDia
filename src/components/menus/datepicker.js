@@ -118,13 +118,7 @@ export default function setDatepicker(context, store, datepickerContext, type) {
     const inactiveDate = new Date(inactiveValue[0], inactiveValue[1], inactiveValue[2]);
     const inactiveDateType = inactiveFormDate.getAttribute("data-form-date-type");
 
-    /**
-     * FORM DATEPICKER CONDITIONS
-     * 1. if user selects start date that is after end date
-     *   -- set end date to start date
-     * 2. if user selects end date that is before start date
-     *  -- set start date to end date
-     */
+    
     if ((isBeforeDate(inactiveDate, datepickerDate) && inactiveDateType === "end") || (isBeforeDate(datepickerDate, inactiveDate) && inactiveDateType === "start")) {
       inactiveFormDate.setAttribute("data-form-date", `${y}-${m}-${d}`);
       inactiveFormDate.textContent = `${datepickerContext.getMonthName().slice(0, 3)} ${d}, ${y}`;
@@ -355,7 +349,6 @@ export default function setDatepicker(context, store, datepickerContext, type) {
   }
 
   function handleKeydownNav(e) {
-    // functionality will change depending on whether the change date modal is open -- use flag to check
     const flag = datepickerChangeDate.classList.contains("show-dpcd");
     switch (e.key) {
 
@@ -381,7 +374,6 @@ export default function setDatepicker(context, store, datepickerContext, type) {
         } else {
           const target = document.querySelector(".datepicker__body--datename-selected");
           if (target === null || !target) {
-            // the last selected day in the previous month was longer than the days in the current month
             setNewDate(null, [
               datepickerContext.getYear(),
               datepickerContext.getMonth(),

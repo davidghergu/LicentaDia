@@ -126,6 +126,9 @@ function formatStartEndDate(start, end, flag) {
   }
 }
 
+
+
+
 function formatStartEndTime(start, end) {
   [start, end] = [new Date(start), new Date(end)];
   let startmin = start.getMinutes();

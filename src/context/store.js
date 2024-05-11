@@ -4,131 +4,7 @@ import { testDate, compareDates } from "../utilities/dateutils";
 import locales from "../locales/en";
 import defautlKeyboardShortcuts from "../locales/kbDefault";
 const colors = locales.colors;
-/*
-  this is a temporary list of store methods for development purposes, it is not a complete list of methods
 
-
-
-  ***************************************
-  // ENTRY MANAGEMENT
-  "addEntry",
-  "createEntry",
-  "deleteEntry",
-  "getActiveEntries",
-  "getEntry",
-  "getEntries",
-  "removeLastEntry",
-  "updateEntry",
-  "searchBy",
-  "sortBy",
-  "getFirstAndLastEntry",
-  "generateCoordinates",
-  "getDayEntries",
-  "getDayEntriesArray",
-  "getMonthEntries",
-  "getMonthEntryDates",
-  "getGroupedMonthEntries",
-  "getWeekEntries",
-  "getYearEntries",
-  "getGroupedYearEntries",
-  ***************************************
-
-
-  ***************************************
-  // CATEGORY MANAGEMENT
-  "addNewCtg",
-  "deleteCategory",
-  "getDefaultCtg",
-  "getFirstActiveCategory",
-  "getFirstActiveCategoryKeyPair",
-  "getActiveCategories",
-  "getActiveCategoriesKeyPair",
-  "getAllCtg",
-  "getAllCtgColors",
-  "getAllCtgNames",
-  "getCategoryStatus",
-  "getCtgColor",
-  "getCtgLength",
-  "hasCtg",
-  "moveCategoryEntriesToNewCategory",
-  "removeCategoryAndEntries",
-  "setCategoryStatus",
-  "setAllCategoryStatusExcept",
-  "updateCtgColor",
-  "updateCtg"
-  ***************************************
-
-
-  ***************************************
-  // KEYBOARD SHORTCUT MANAGEMENT
-  "getShortcuts",
-  "setShortCut",
-  "setShortcutsStatus",
-  "getShortcutsStatus",
-  ***************************************
-
-  ***************************************
-  // ANIMATION MANAGEMENT
-  "setAnimationStatus",
-  "getAnimationStatus"
-  ***************************************
-
-
-  ***************************************
-  // POPUP/TOAST/NOTIFICATION MANAGEMENT
-  "addActiveOverlay",
-  "removeActiveOverlay",
-  "getActiveOverlay",
-  "hasActiveOverlay",
-  ***************************************
-
-
-  ***************************************
-  // USER UPLOAD/DOWNLOAD MANAGEMNET
-  "validateUserUpload",
-  "setUserUpload",
-  "setDataReconfigCallback",
-  "getUserUpload",
-  "getDataReconfigCallback",
-  ***************************************
-
-
-  ***************************************
-  // FORM MANAGEMENT 
-  "setFormRenderHandle",
-  "getFormRenderHandle",
-
-  "setFormResetHandle",
-  "getFormResetHandle",
-
-  "setRenderFormCallback",
-  "getRenderFormCallback",
-  ***************************************
-
-
-  ***************************************
-  // SIDEBAR MANAGEMENT
-  "setRenderSidebarCallback",
-  "getRenderSidebarCallback"
-  ***************************************
-
-
-  ***************************************
-  // DATEPICKER MANAGEMENT
-  "setResetDatepickerCallback",
-  "getResetDatepickerCallback",
-  ***************************************
-
-
-  ***************************************
-  // CALENDAR MANAGEMENT
-  "setResizeHandle",
-  "getResizeHandle",
-  ***************************************
-]
-*/
-// Store is passed to all calendar views in the following order :
-// ./index > ./renderViews > ./setViews > component
 
 class Store {
   constructor () {
@@ -387,9 +263,7 @@ class Store {
   /* SEGMENT ENTRIES FOR SPECIFIC VIEWS (YEAR/MONTH/...ect)*/
 
   // @generateCoordinates -- (only used in week and day view)
-  // generates coordinates based on start and end times for a given entry
-  // if an entry spans beyond a day, it will render at the top of the grid in
-  // a static (immobile) position.
+  
   generateCoordinates(start, end) {
     [start, end] = [testDate(start), testDate(end)];
 
@@ -817,7 +691,6 @@ class Store {
 
   /* ******************** */
   /*  OVERLAY MANAGEMENT */
-  // see readme @ --overlay management-- for more info
   addActiveOverlay(overlay) {
     this.activeOverlay.add(overlay);
   }
@@ -893,13 +766,10 @@ class Store {
   getUserUpload() {
     return this.userUpload;
   }
-  /* ************************ */
+ 
 
-  /* ******************************************* */
-  /*  STATE MANAGEMENT : RENDERING / RESET / RESIZE */
-  /**
-   * This got a bit more complicated than I anticipated, I'll come back to this later;
-   */
+  
+  
   setFormRenderHandle(type, callback) {
     this.handleRenders.calendars[type].render = callback;
   }

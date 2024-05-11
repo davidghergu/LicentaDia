@@ -1,22 +1,6 @@
 import calcTime from "./timeutils";
 
-/**
- * For a full explanation see readme @grid-engines
- * 
- * The weekiew & dayview drag/resize systems are 90% similar with the only difference of course being some additional calculations to drag between days in the weekview.
- * 
- * 
- * All drag / resize events throughout each view follow these steps;
- * -- capture :
- * document.onmousedown captures the position of cursor & defines variables for start/end points
- * 
- * -- relay :
- * document.onmousemove relays the new position to start/end point variables, which in turn relay a new set of styling rules to the element target (entry) 
- * 
- * -- render :
- * document.onmouseup intitiates all render logic
- * 
- */
+
 
 const identifiers = {
   boxnumarr: {
@@ -102,7 +86,6 @@ function calcNewLeft(index) {
 }
 
 
-// *** I'm using a temporary switch statement to try and fine tune the collision handling for now
 function setBoxWidthWeek(box, prepend, dataidx) {
   const attr = box.getAttribute(dataidx);
   switch (attr) {
@@ -280,7 +263,6 @@ function setStylingForEvent(clause, wrapper, store) {
 
   switch (clause) {
     case "dragstart":
-      // make sidebar slightly see through if it is open and the user is dragging or resizing (screens smaller than 840px);
       if (!sidebar.classList.contains("hide-sidebar")) {
         if (wrapper.offsetLeft === 0) {
           sidebar.classList.add("sidebar--dragged-over");
@@ -385,6 +367,9 @@ function createTemporaryBox(box, col, hasSibling, view) {
     col.appendChild(clone);
   }
 }
+
+
+
 
 function getBoxDefaultStyle(y, backgroundColor) {
   const style = identifiers.styles.newBox;

@@ -5,13 +5,7 @@ export default class FormSetup {
     this.dates;
   }
 
-  /**
-   * 
-   * @param {string} type ("edit" / "create")
-   * @param {string} id (entry ID || null)
-   * @param {string} title || null
-   * @param {string} description || nulll
-   */
+
   setSubmission(type, id, title, description) {
     this.submission = {
       type: type,
@@ -21,12 +15,7 @@ export default class FormSetup {
     };
   }
 
-  /**
-   * 
-   * @param {string} name (store category name)
-   * @param {string} color (store category color)
-   * @param {string} offsetColor (category color rgba 0.5)
-   */
+ 
   setCategory(name, color) {
     this.category = {
       name: name,
@@ -34,13 +23,7 @@ export default class FormSetup {
     };
   }
 
-  /**
-   * 
-   * @param {object} 
-   * : {Dates: [new Date(start), new Date(end)]}
-   * : {Dates: [start("YYYY-MM-DD"), end("YYYY-MM-DD")]}
-   * : {Minutes: [number, number]}
-   */
+
   setDates(object) {
     this.dates = { object: object };
   }

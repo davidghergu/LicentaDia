@@ -88,7 +88,7 @@ export default function renderViews(context, datepickerContext, store) {
   function setInitialAttributes() {
     selectElement.setAttribute("data-value", `${context.getComponent().slice(0, 1).toUpperCase()}`);
 
-    headerLogo.setAttribute("data-current-day-of-month", new Date().getDate());
+   // headerLogo.setAttribute("data-current-day-of-month", new Date().getDate());
   }
 
   function renderSidebarDatepicker() {
@@ -212,7 +212,7 @@ export default function renderViews(context, datepickerContext, store) {
   // the submenu (meatball menu) adjacent to "create" button in sidebar
   // opens instance of settings menu
   function handleToggleSubmenu() {
-    getSidebarSubMenu(store, context);
+    //getSidebarSubMenu(store, context);
   }
 
   // open / close sidebar
@@ -471,13 +471,8 @@ export default function renderViews(context, datepickerContext, store) {
     }
   }
 
-  /* configure keyboard shortcuts */
-  /* 2022-01-14
-  * Google calendar has recently updated their app wide throttling from a global value of around 150 to the minimum of 4ms(might be 10) for period changes and (250-300) for view changes. 
-  * For now, I'm keeping global throttle at 150ms. 
-  */
+
   function delegateGlobalKeyDown(e) {
-    // const temptoastpopup = document?.querySelector(".toast")
     const toggleChangeview = (e) => {
       if (selectElement.classList.contains("selection--active")) {
         if (e.key.toLowerCase() === "v") {
@@ -596,11 +591,7 @@ export default function renderViews(context, datepickerContext, store) {
 
   const getKeyPressThrottled = throttle(delegateGlobalKeyDown, 150);
   const handleHeaderDelegation = throttle(delegateHeaderEvents, 150);
-  // shortcuts defined within this function are global and will work anywhere within the application (except for modal/popup/form windows)
 
-  // If a modal/popup is open, all keyboard shortcuts defined within this function will be disabled until the modal/popup is closed.
-  // Note that Each modal/popup has its own keydown close event on escape thats defined within the scope of its own function,
-  // once it is closed, the event listener is removed from the DOM.
   let [lk, lk2] = ['', ''];
   function handleGlobalKeydown(e) {
     if (!store.getShortcutsStatus()) return;

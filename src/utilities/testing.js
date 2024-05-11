@@ -76,20 +76,3 @@ export default function generateRandomEvents(numberOfEvents) {
 }
 
 
-/**
- * use the event listener below to find all elements with event listeners.
- */
-// window.addEventListener("mouseup", () => {
-//   for (let i = 0; i < document.all.length; i++) {
-//     const element = document.all[i];
-//     if (element.onmousedown) {
-//       console.log("onmousedown", element.getAttribute("class"));
-//     }
-//     if (element.onkeydown) {
-//       console.log("onkeydown", element.getAttribute("class"));
-//     }
-//     if (element.onclick) {
-//       console.log("onclick", element.getAttribute("class"));
-//     }
-//   }
-// });

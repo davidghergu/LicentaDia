@@ -24,9 +24,6 @@ export default {
 
   },
 
-  /*
-    - the following are colors for calendar categories
-  */
   colors: {
     red: {
       1: '#DF2A79',

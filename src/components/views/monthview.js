@@ -113,12 +113,7 @@ export default function setMonthView(context, store, datepickerContext) {
     const daynumberAndMonth = day.getDate() + " " + locales.labels.monthsShort[day.getMonth()];
     const daynumber = document.createElement('span');
     daynumber.classList.add("monthview--daynumber");
-    /**
-     * case 1: cell does not represent current month
-     * case 2: cell represents first day of current month
-     * case 3: cell represents today
-     * case 4: cell represents days within current month
-    **/
+   
     if (day.getMonth() !== context.getMonth()) {
       daynumber.textContent = daynumberAndMonth;
       daynumber.classList.add("monthview--daynumber-prevnext");

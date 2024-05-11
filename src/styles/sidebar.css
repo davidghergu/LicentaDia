@@ -97,34 +97,7 @@
 }
 
 
-/* data btn */
-.sb-data-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 28px;
-  width: 28px;
-  border-radius: 18px;
-  cursor: pointer;
-  box-shadow: var(--box-shadow4);
-  transition: box-shadow 0.2s ease-in-out;
-  margin-bottom: 4px;
-}
 
-.sb-data-btn:focus-visible {
-  background: transparent !important;
-  box-shadow:
-    rgba(83, 88, 95, 0.2) -1px -1px 2px 0px,
-    rgba(0, 0, 0, 0.2) 0px 1px 3px 1px,
-    rgba(83, 88, 95, 0.1) 0px 4px 5px 0px;
-}
-
-.sb-data-btn:hover {
-  box-shadow:
-    rgba(83, 88, 95, 0.2) -1px -1px 2px 0px,
-    rgba(0, 0, 0, 0.2) 0px 1px 3px 1px,
-    rgba(83, 88, 95, 0.1) 0px 4px 5px 0px;
-}
 
 .sbti-one,
 .sbti-two {

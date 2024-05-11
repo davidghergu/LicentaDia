@@ -11,14 +11,7 @@ function debounce(func, limit) {
     timeoutId = setTimeout(() => func.apply(this, args), limit);
   };
 }
-/**
- * 
- * @param {*} e 
- * @param {*} element 
- * 
- * With the exception of popup modals, all events in the app
- * are delegated from their parent element.
- */
+
 function getClosest(e, element) {
   return e.target.closest(element);
 }
@@ -114,16 +107,6 @@ function setTheme(context) {
 
 
 
-/**
- * 
- * @param {number} popupWidth 
- * @param {number} popupHeight 
- * @param {array} coords [x: e.clientX, y: e.clientY]
- * @param {array} windowCoords [x: window.innerWidth, y: window.innerHeight]
- * @param {boolean} center should popup be centered ?
- * @param {number} targetWidth if center is true, targetWidth required to center
- * @returns [left position, top position];
- */
 function placePopup(popupWidth, popupHeight, coords, windowCoords, center, targetWidth) {
   const [popupW, popupH] = [popupWidth, popupHeight];
   const [x, y] = coords;

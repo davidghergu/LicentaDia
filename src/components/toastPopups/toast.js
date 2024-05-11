@@ -7,14 +7,7 @@ import store from "../../context/store";
 
 const body = document.querySelector(".body");
 const toast = document.querySelector(".toast");
-/**
- * 
- * @param {string} message 
- * @param {function} callback 
- * @param {function} callbackTwo 
- * @param {function} removeCallback 
- * @param {function} undoCallback 
- */
+
 export default function createToast(message, undoCallback) {
 
   function closetoast() {
@@ -44,7 +37,6 @@ export default function createToast(message, undoCallback) {
     undoToastWrapper.appendChild(undoToastMessage);
 
     function delegateToast(e) {
-      // if e.target is not in the toast, remove the toast
       const gettoast = getClosest(e, ".toast");
       if (!gettoast) {
         closetoast();

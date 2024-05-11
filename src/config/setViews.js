@@ -26,22 +26,17 @@ export default function setViews(component, context, store, datepickerContext) {
       listComponent
     ];
 
-    // reset previous view after switching to a new view
     const resetPrevView = store.getResetPreviousViewCallback();
     if (prev1 !== null && resetPrevView !== null && prev1 !== prev2) {
       resetPrevView();
     }
 
-    // only the month view relies on a resize listener
-    // more info provided @readme > monthview > box queries
+    
     views.forEach((view) => {
       view.classList.add("hide-view");
-      // if (view !== monthComponent) {
-      //   window.onresize = null;
-      // }
+     
     });
   }
-  // window.removeEventListener("resize", store.getResizeHandle("month"));
 
   function initView(component) {
     switch (component) {

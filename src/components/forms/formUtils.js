@@ -16,13 +16,7 @@ class FormConfig {
     this.formCatgoryIcon = document.querySelector(".form--body__category-icon");
   }
 
-  /**
-   * 
-   * @param {number} eX element left
-   * @param {number} eY element top
-   * @param {boolean} shouldCenter (optional) should the form be centered to the element
-   * @param {number} centerOffset (optional) offset from the center of the element
-   */
+ 
   setFormStyle(eX, eY, shouldCenter, centerOffset) {
     if (!shouldCenter) {
       shouldCenter = false;
@@ -57,17 +51,6 @@ class FormConfig {
     });
   }
 
-  /**
-   * 
-   * @param {HTML} input 
-   * @param {object} date 
-   * @param {number} minutes 
-   * @param {string} dateFormatted 
-   * @desc
-   * Set the date & time for the form input fields
-   * Set attributes for date/time inputs
-   * Format date/time for display
-   */
   setFormDateInput(input, date, minutes, dateFormatted) {
     const [dateinput, timeinput] = [
       input.firstElementChild,
@@ -80,7 +63,6 @@ class FormConfig {
       timeformatted
     );
 
-    // darn yankee time
     timeinput.textContent = `${+date.getHours() === 0 || +date.getHours() === 12 ? 12 : date.getHours() % 12}:${minutes}${date.getHours() < 12 ? "am" : "pm"}`;
 
     dateinput.setAttribute("data-form-date", dateFormatted);
@@ -98,19 +80,6 @@ class FormConfig {
     datepickerContext.setDateSelected(start.getDate());
   }
 
-  /**
-   * 
-   * @param {object} dates 
-   * @desc
-   * Iterate through object containing the data below to both the start date/time & end date/time form inputs
-   * 
-   * DateObject: [Date(start), Date(end)]
-   * 
-   * Minutes: [start minutes, end minutes]
-   * 
-   * DateString [start date, end date]
-   * 
-   */
   configFormDateInputs(dates) {
     for (let i = 0; i < 2; i++) {
       this.setFormDateInput(

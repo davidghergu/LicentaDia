@@ -14,7 +14,6 @@ export default function createGoTo(context, store, datepickerContext) {
     let arr;
     let haserr = false;
 
-    // accepts two formats: DD/MM/YYYY or jan 1 2021
     if (date.includes("/")) {
       arr = date.split("/");
     } else {
@@ -25,12 +24,10 @@ export default function createGoTo(context, store, datepickerContext) {
       haserr = true;
     }
 
-    // convert string year/month/day to int
-    // convert 'jan' to 0 || 'january' to 0
+
     const [month, day, year] = arr.map((date, idx) => {
       let dateInt = parseInt(date);
-      let tempMonth = null; // in case of month string
-
+      let tempMonth = null; 
 
       if (isNaN(dateInt)) {
         if (date.length > 3) {
@@ -51,9 +48,7 @@ export default function createGoTo(context, store, datepickerContext) {
         haserr = true;
       }
 
-      // check if year is valid
-      // if user inputs value less than 100, assume they mean 2000s
-      // do not allow year greater than 2100 or less than 1901
+     
       if (idx === 2) {
         if (dateInt < 100) {
           dateInt += 2000;
@@ -150,12 +145,11 @@ export default function createGoTo(context, store, datepickerContext) {
   }
 
   function openGoTo() {
-    // prevent keyboard shortcut from being registering in input field onload
     removeError();
     setTimeout(() => {
       gotoInput.focus();
       gotoInput.value = formatStart();
-    }, 10); // 10ms is within browser threshold
+    }, 10); 
     gotoOverlay.classList.remove("hide-gotodate");
     goto.classList.remove("hide-gotodate");
     store.addActiveOverlay("hide-gotodate");

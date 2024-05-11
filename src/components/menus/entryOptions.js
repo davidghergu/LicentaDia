@@ -69,10 +69,7 @@ export default function getEntryOptionModal(context, store, entry, datepickerCon
   }
 
 
-  /**
-   * formNegated
-   * @desc anytime the entry options modal is opened, the form is set to represent the entry selected. If user chooses to not open the form from this modal, reset form & modal to default state.
-   */
+
   function formNegated() {
     const resetCurrentView = store.getFormResetHandle(context.getComponent());
     closeEntryOptions();
@@ -118,13 +115,7 @@ export default function getEntryOptionModal(context, store, entry, datepickerCon
         let daysSince = Math.floor(secondsDiff / (1000 * 60 * 60 * 24));
         let timeheadertitle;
 
-        /**
-         * If the entry has ended, display the time since it ended
-         * If the entry has ended today, display the time since it ended
-         * If the entry has ended yesterday, display "ended yesterday"
-         * If the entry starts today, display how long until it is scheduled to end
-         * If the entry is yet to start, display how long until it is scheduled to start
-         */
+    
         if (daysSince === 0) {
           let hourSince = Math.floor(secondsDiff / (1000 * 60 * 60));
           let minSince = Math.floor((secondsDiff - (hourSince * 1000 * 60 * 60)) / (1000 * 60));

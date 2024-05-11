@@ -64,44 +64,6 @@ const selectedCategoryTitle = document.querySelector(".form--body__category-moda
 const formSubmitButton = document.querySelector(".form--footer__button-save");
 
 
-/**
- * function table of contents
- * I attempted to give a break down of the thought process / order of operations and by page 16 I realized this may well be the worst thing I have ever done.
- * I am haunted by this mess.
- *  
- * 
- * closetimepicker
- * setEndDateToNextDay
- * setEndDateToNextHour
- * createTimepicker
- * renderSidebarDatepickerForm
- * getDefaultCategory
- * setInitialFormCategory
- * setFormInitialValues
- * getDatePicker
- * handleOverlayClose
- * handleSetDate
- * getDateFormatViaAttr
- * getTimeFormatViaAttr
- * getDateTimeFormatted
- * configDatesForStore
- * checkFormValidity
- * removeErrorMessages
- * handleFormErrors
- * removeLastFormEntry
- * handleFormClose
- * handleSubmissionRender
- * handleFormSubmission
- * handleCategorySelection
- * closeCategoryModal
- * createCategoryOptions
- * openCategoryModal
- * dragFormAnywhere
- * delegateCategorySelection
- * handleTimepickerSetup
- * delegateEntryFormEvents
- * delegateFormKeyDown
- */
 
 export default function setEntryForm(context, store, datepickerContext) {
   let categories;
@@ -394,17 +356,16 @@ export default function setEntryForm(context, store, datepickerContext) {
   }
 
   function checkFormValidity(title, description, category, startDate, endDate) {
-    // all inputs are valid by default 
-    // if any input becomes invalid, only the error message for that input will be returned through a error object defined below
-    const status = {
+   const status = {
       title: true,
       description: true,
       startDate: true,
       endDate: true,
       valid: true,
     };
-    /* ************************ */
-    /*  TITLE VALIDATION CHECK */
+    
+
+
     if (typeof title === "string") {
       const titlecheck = title.trim().replace(/[^a-zA-Z0-9\s_-]+|\s{2,}/g, ' ');
       if (titlecheck.length > 50) {
@@ -482,15 +443,6 @@ export default function setEntryForm(context, store, datepickerContext) {
     }
   }
 
-  /**
-   * 
-   * @param {object} errorMessages object key represents the input name and the value represents the string error message
-   * 
-   * Use object key to get the input HTML element class name and append the error message as a data attribute to the input element using the err object.
-   * 
-   * Set the submit button to disabled until all errors are resolved
-   * 
-   */
   function handleFormErrors(errorMessages) {
     titleInput.blur();
 
@@ -605,15 +557,12 @@ export default function setEntryForm(context, store, datepickerContext) {
 
     handleFormClose();
 
-    // if the submission type is create, pass a callback function to allow user to remove the last entry if they wish
     if (type === "create") {
       setTimeout(() => {
         createToast("Event created", removeLastFormEntry);
       }, 4);
     } else {
-      // if the submission type is edit, pass a callback function to allow user to undo the last edit if they wish
-
-      // determine whether the entry was edited or not
+  
       const shouldCreateToast = store.compareEntries(
         entryBefore,
         store.getEntry(id)
@@ -637,8 +586,6 @@ export default function setEntryForm(context, store, datepickerContext) {
     const [startDate, endDate] = configDatesForStore();
     const category = categoryModalWrapper.getAttribute("data-form-category");
 
-    // if errors exist, validityStatus will represent an object with keys that match the input names, and values that represent the error messages as strings;
-    // note that two types of submissions are possible: edit and create
     const validityStatus = checkFormValidity(
       title, description, category, startDate, endDate,
     );
